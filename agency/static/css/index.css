@@ -147,3 +147,39 @@ h2{
   .slick-arrow.slick-hidden {
       display: none;
   }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+/* Responsive columns */
+
+@media screen and (max-width: 1000px) {
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      
+    }
+}
+/* .panel.panel-card {
+    position: relative;
+    height: 241px;
+    border: none;
+    overflow: hidden;
+} */
+.image {
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 10px 10px 5px grey;
+    width: 100%;
+
+}
+
