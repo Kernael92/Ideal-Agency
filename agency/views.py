@@ -30,3 +30,8 @@ class ModelSignUpView(CreateView):
         login(self.request,user)
         return redirect('models')
 
+def model(request):
+    models = Model.objects.all()
+    return render(request,'agency/model.html',{'models':models})
+
+

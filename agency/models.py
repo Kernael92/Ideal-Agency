@@ -30,12 +30,17 @@ class Model(models.Model):
         (175,'175cm'),
         (170,'170cm'),
     )
+    OCCUPATION_FIELD = (
+        ('MODEL','MODEL'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     phone_number = models.CharField(max_length = 20)
     height = models.IntegerField(choices=HEIGHT_CHOICE, default = 0)
     gender = models.CharField(choices = GENDER_CHOICE,max_length = 7)
     location = models.CharField(choices=LOCATION_CHOICE,max_length = 245)
-    photolook = models.ImageField(upload_to='photolook')
+    image = models.ImageField(upload_to='photolook')
+    profile_pic = models.ImageField(upload_to = 'profile_pic', null='True')
+    occupation = models.CharField(max_length = 200,choices = OCCUPATION_FIELD)
 
     def save_model(self):
         self.save()
