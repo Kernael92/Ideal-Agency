@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from  agency.views import ModelSignUpView,SignUpView
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-     url(r'',include('agency.urls')),
+    url(r'',include('agency.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    
+    url(r'accounts/signup/model/',ModelSignUpView.as_view(),name = 'model_signup'),
+    
+
 ]

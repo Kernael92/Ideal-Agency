@@ -35,6 +35,17 @@ class Model(models.Model):
     height = models.IntegerField(choices=HEIGHT_CHOICE, default = 0)
     gender = models.CharField(choices = GENDER_CHOICE,max_length = 7)
     location = models.CharField(choices=LOCATION_CHOICE,max_length = 245)
+    photolook = models.ImageField(upload_to='photolook')
+
+    def save_model(self):
+        self.save()
+
+    def delete_model(self):
+        self.delete()
+
+    def update_model(self,id):
+        model = Model.objects.filter(model_id=id).update()
+        return model
 
 class Client(models.Model):
     OCCUPATION_FIELD = (
@@ -48,6 +59,18 @@ class Client(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     occupation = models.CharField(max_length = 200,choices = OCCUPATION_FIELD)
     phone_number = models.CharField(max_length = 20)
+
+class Casting(models.Model):
+    client = models.ForeignKey(Client,on_delete=models.CASCADE)
+    details = models.TextField()
+    image = models.ImageField(upload_to = 'image')
+    valid_date = models.DateField(auto_now_add=True)
+
+
+class Booking(models.Model):
+    model = models.ForeignKey(Model,on_delete=models.CASCADE)
+    client = models.ForeignKey(Client,on_delete=models.CASCADE)
+
 
 
    
