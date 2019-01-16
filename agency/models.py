@@ -36,5 +36,19 @@ class Model(models.Model):
     gender = models.CharField(choices = GENDER_CHOICE,max_length = 7)
     location = models.CharField(choices=LOCATION_CHOICE,max_length = 245)
 
+class Client(models.Model):
+    OCCUPATION_FIELD = (
+        ('PHOTOGRAPHER','PHOTOGRAPHER'),
+        ('FASHION STYLIST','FASHION STYLIST'),
+        ('INDUSTRY PROFESSIONAL','INDUSTRY PROFESSIONAL'),
+        ('HAIR AND MAKE UP ARTIST','HAIR AND MAKE UP ARTIST'),
+        
+
+    )
+    user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+    occupation = models.CharField(max_length = 200,choices = OCCUPATION_FIELD)
+    phone_number = models.CharField(max_length = 20)
+
+
    
 
