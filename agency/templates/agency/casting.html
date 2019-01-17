@@ -2,27 +2,35 @@
 {% load bootstrap4 %}
 {% block content %}
 {{block.super}}
+<div class="row">
 {%for casting in castings%}
 <div class="container">
-    <div class="row">
-        <div class="column-33">
-            <img class="casting"src="{{casting.image.url}}" alt="">
-
-        </div>
-        <div class="column-66">
-            <h1>{{casting.client.occupation}}</h1>
-            <h1>{{casting.Title}}</h1>
-            <p>{{casting.details}}</p>
-
-        </div>
-
+    <div class="column-33">
+        <img class="image" class="casting"src="{{casting.image.url}}" alt="">
 
     </div>
-    <div>
-        <button>APPLY NOW</button>
-    </div>
+    <div class="column-66">
+        <h1>{{casting.client.occupation}}</h1>
+        <h1>{{casting.Title}}</h1>
+        <p>{{casting.details}}</p>
+        <a href="">
+        <button style="font-size: 15px;">APPLY NOW</button>
+        </a>
 
+    </div>
+</div>
 </div>
 {% endfor %}
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="create">
+                <a href="{%url 'new-model'%}"><button>CREATE PROFILE</button></a>
+        </div>
+        </div>  
+    </div>
+</div>
+
 
 {% endblock %}

@@ -8,16 +8,16 @@ from django.forms import ModelForm,Textarea, IntegerField
 class NewCastingForm(forms.ModelForm):
     class Meta:
         model = Casting
-        fields = ['client','Title', 'image','details','valid_date']
+        fields = ['client','Title', 'image','details']
 
 class NewModelForm(forms.ModelForm):
     class Meta:
         model = Model
-        fields = ['model','phone_number','height','gender','location','image','profile_pic','occupation']
+        fields = ['user','phone_number','height','gender','location','image','profile_pic','occupation']
 
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ['client', 'profile_pic','occupation','phone_number']
+        fields = ['user', 'profile_pic','occupation','phone_number']
 
 

@@ -2,18 +2,17 @@
 {% load bootstrap4 %}
 {% block content %}
 {{block.super}}
-{%for model in models%}
-<div class="container-fluid">
     <div class="row">
-        <div class="col-md-4 col-lg-4">
+{%for model in models%}
+<div class="col-md-4 ">
+<div class="container-fluid">
             <div class="card">
                 <div class="card border-secondary">
                     <img class="card-img-top" id="myImg"  src="{{model.image.url}}" class="img-responsive" alt="" style='width:100%;'  data-toggle="modal" data-target="#myModal{{model.id}}"  >
                     <div class="modal fade" id="myModal{{model.id}}" tabindex="-1" role="dialog" aria-labelledby="extra" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title" id="myModalLongTitle" style="font-size: 40px; font-family: cursive;font-weight: bolder; color:  #375F1B;">{{post.title}}</h1>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span   aria-hidden="true" >&times;</span>
                                 </button>
@@ -21,7 +20,7 @@
                         
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-9 col-lg-9">
+                                    <!-- <div class="col-md-9 col-lg-9"> -->
                                         <img id="myImg"class="card-img-top" class="img-responsive" src="{{model.image.url}}" style="width: 100%;"><br><br>
                                     </div>
                                     <div class="col-md-3 col-lg-3">
@@ -33,12 +32,7 @@
                                         
                                     </div>
 
-                                </div>
-                                
-                                
-                        
-                                
-                                
+                                </div>   
                             </div>
                         </div>
                     </div>
@@ -46,7 +40,20 @@
                 </div> 
             </div> 
         </div>
-    </div>
-</div>      
-{% endfor %}
+        {% endfor %}
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="post">
+                    <a href="{%url 'new-casting'%}"><button>POST CASTINGS</button></a>
+                    
+                </div>
+            </div>
+                
+            </div>
+        </div>
+        
+    </div>     
+
 {% endblock %}

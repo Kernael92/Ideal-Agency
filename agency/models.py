@@ -28,7 +28,7 @@ class Model(models.Model):
     OCCUPATION_FIELD = (
         ('MODEL','MODEL'),
     )
-    model = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     phone_number = models.CharField(max_length = 20)
     height = models.IntegerField(choices=HEIGHT_CHOICE, default = 0)
     gender = models.CharField(choices = GENDER_CHOICE,max_length = 7)
@@ -48,7 +48,7 @@ class Model(models.Model):
         return model
 
     def __str__(self):
-        return self.model
+        return self.user.username
 
 
 class Client(models.Model):
@@ -60,7 +60,7 @@ class Client(models.Model):
         
 
     )
-    client = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     occupation = models.CharField(max_length = 200,choices = OCCUPATION_FIELD)
     phone_number = models.CharField(max_length = 20)
     profile_pic = models.ImageField(upload_to='profile_pic',null=True)
@@ -76,7 +76,7 @@ class Client(models.Model):
         return client
 
     def __str__(self):
-        return self.client
+        return self.user.username
 
 
 class Casting(models.Model):
@@ -97,7 +97,7 @@ class Casting(models.Model):
         return casting
 
     def __str__(self):
-        return self.details
+        return self.Title
 
     
 

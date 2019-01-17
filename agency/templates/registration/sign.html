@@ -1,18 +1,27 @@
 {%extends "registration/base.html"%} {% load bootstrap4 %}
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-lg-6">
-            <h1>LOOKING FOR MODELS </h1>
-            <a href="{%url 'model_signup'%}"><span>SIGN Up</span></a>
+<section class="content-section video-section">
+        <div class="pattern-overlay">
+        <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=42uOCnazJFY',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+              <h1>DISCOVER MODELS OR BE DISCOVERED</h1>  
+              <h3>THE EASIER WAY TO FIND MODELS</h3>
+             </div>
+             <div class="model">
+                 <a href="{%url 'casting'%}">
+                 <span style="font-size: 20px;" class="label warning">LOOKING FOR MODELS JOBS</span>
+                 </a>
+             </div><hr><hr>
+             <div class="client">
+                 <a href="{%url 'model'%}">
+                    <span style="font-size: 20px;"class="label warning">LOOKING FOR MODELS</span>
+                </a>
+             </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-6">
-            <h1>LOOKING FOR MODEL JOBS</h1>
-            <a href="{%url 'client_signup'%}"><span>SIGN UP</span></a>
-
-        </div>
-
-    </div>
-
-</div>
+      </section>
+      
 {% endblock %}

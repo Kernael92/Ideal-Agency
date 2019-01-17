@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^accounts/signup/$',views.SignUpView, name='signup'),
     url(r'^model/',views.model, name='model'),
     url(r'^casting/',views.casting, name='casting'),
+    url(r'^new/casting$', views.new_casting, name='new-casting'),
+    url(r'^new/model$', views.new_model, name='new-model'),
     
     
 ]
