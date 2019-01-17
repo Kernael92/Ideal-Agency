@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render,redirect
-from .models import Model,Client,User,Casting
+from django.shortcuts import render,redirect,get_object_or_404
+from .models import Model,Client,Casting
 from django.contrib.auth import login
 from django.views.generic import CreateView
-from .forms import ModelSignUpForm,ClientSignUpForm
+from django.contrib.auth.decorators import login_required
+from .decorators import model_required,client_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -16,34 +18,6 @@ def index(request):
 def SignUpView(request):
     return render(request,'registration/sign.html')
 
-class ModelSignUpView(CreateView):
-    model = User
-    form_class = ModelSignUpForm
-    template_name = 'registration/signup_form.html'
-
-    def get_context_data(self,**kwargs):
-        kwargs['user_type'] = 'model'
-        return super().get_context_data(**kwargs)
-
-    def form_valid(self,form):
-        user = form.save()
-        login(self.request,user)
-        return redirect('models')
-
-
-class ClientSignUpView(CreateView):
-    model = User
-    form_class= ClientSignUpForm
-    template_name = 'registration/signup_form.html'
-
-    def get_context_data(self,**kwargs):
-        kwargs['user_type'] = 'client'
-        return super().get_context_data(**kwargs)
-
-    def form_valid(self,form):
-        user = form.save()
-        login(self.request,user)
-        return redirect('client')
 
 
 def model(request):
@@ -53,5 +27,8 @@ def model(request):
 def casting(request):
     castings = Casting.objects.all()
     return render(request,'agency/casting.html',{'castings':castings})
+
+
+
 
 

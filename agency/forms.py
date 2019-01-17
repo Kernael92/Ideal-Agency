@@ -1,40 +1,23 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
-from .models import Model,Client,User
-
-class ModelSignUpForm(UserCreationForm):
-
-    fields = ['location','gender','height','phone_number']
-    class Meta(UserCreationForm.Meta):
-        model = User
-
-        @transaction.atomic
-        def save(self):
-            user = super().save(commit=False)
-            user.is_model = True
-            user.save()
-            model = Model.objects.create(user=user)
-            model.location.add(*self.cleaned_data.get('location'))
-            model.gender.add(*self.cleaned_data.get('gender'))
-            model.height.add(*self.cleaned_data.get('height'))
-            return user
+from .models import Model,Client,Casting
+from django.forms import ModelForm,Textarea, IntegerField
 
 
-class ClientSignUpForm(UserCreationForm):
+class NewCastingForm(forms.ModelForm):
+    class Meta:
+        model = Casting
+        fields = ['client','Title', 'image','details','valid_date']
 
-    fields = ['occupation']
-    class Meta(UserCreationForm.Meta):
-        model = User
+class NewModelForm(forms.ModelForm):
+    class Meta:
+        model = Model
+        fields = ['model','phone_number','height','gender','location','image','profile_pic','occupation']
 
-        @transaction.atomic
-        def save(self):
-            user = super().save(commit=False)
-            user.is_client = True
-            user.save()
-            client = Client.objects.create(user=user)
-            client.occupation.add(*self.cleaned_data.get('occupation'))
-            return user
-
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = ['client', 'profile_pic','occupation','phone_number']
 
 
