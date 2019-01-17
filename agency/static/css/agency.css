@@ -1,0 +1,63 @@
+#myImg {
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 10px 10px 5px grey;
+    
+}
+
+#myImg:hover {opacity: 0.8;}
+
+.modal-dialog {
+    width: 100vw;
+    height:100vh;
+}
+
+
+/* Add Animation */
+.modal-content {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    overflow: auto;
+    background-image: url(../images/img1.jpg);
+    
+    padding: 10px;
+    margin: 10px;
+    border: 10px;
+
+}
+.profile_pic {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+
+}
+.column-66 {
+    float: left;
+    width: 66.66666%;
+    padding: 20px;
+}
+  
+.column-33 {
+    float: left;
+    width: 33.33333%;
+    padding: 20px;
+}
+@media screen and (max-width: 1000px) {
+    .column-66,
+    .column-33 {
+        float: left;
+     
+    }
+    
+}
+
+  
+
+
+  
+
+  

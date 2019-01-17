@@ -1,30 +1,18 @@
-{%extends "registration/base.html"%}
-{% load bootstrap4 %}
+{%extends "registration/base.html"%} {% load bootstrap4 %}
 {% block content %}
-{{block.super}}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-6 col-lg-6">
-            <div class="clients">
-            <h1 >LOOKING FOR MODELS </h1>
-            <li>
-                <a href="#" >Sign Up<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-log-in"></span></a>
-            </li>
-            </div>
-
+            <h1>LOOKING FOR MODELS </h1>
+            <a href="{%url 'model_signup'%}"><span>SIGN Up</span></a>
         </div>
         <div class="col-md-6 col-lg-6">
-            <div class="models">
             <h1>LOOKING FOR MODEL JOBS</h1>
-            <li>
-                <a href="{%url 'model_signup'%}">Sign Up </span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-log-in"></span></a>
-            </li>
-            </div>
+            <a href="client_signup"><span>SIGN UP</span></a>
 
         </div>
 
     </div>
 
 </div>
-<div id="particles-js"></div>
 {% endblock %}

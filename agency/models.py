@@ -19,8 +19,8 @@ class Model(models.Model):
     )
 
     GENDER_CHOICE = (
-        ('F','FEMALE'),
-        ('M','MALE'),
+        ('FEMALE','FEMALE'),
+        ('MALE','MALE'),
     )
 
     HEIGHT_CHOICE = (
@@ -67,6 +67,7 @@ class Client(models.Model):
 
 class Casting(models.Model):
     client = models.ForeignKey(Client,on_delete=models.CASCADE)
+    Title=models.CharField(max_length=245, null=True)
     details = models.TextField()
     image = models.ImageField(upload_to = 'image')
     valid_date = models.DateField(auto_now_add=True)
